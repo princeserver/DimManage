@@ -1,0 +1,11 @@
+name: DimManage
+version: '${version}'
+main: com.github.majisyou.dimmanage.DimManage
+api-version: 1.18
+authors: [ majisyou ]
+description: World-tp and home add
+
+commands:
+  world:
+    description: world-tp
+    usage: コマンド失敗
