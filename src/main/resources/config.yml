@@ -1,0 +1,52 @@
+ServerName:
+
+
+MySql:
+  Host: test
+  Port: 3306
+  Database: test
+  TableName: test
+  UserName: test
+  PassWord: test
+
+dimensions:
+  world: normal
+  world_the_end: normal
+  world_nether: normal
+  world_sys_building: building
+  world_sys_lobby: lobby
+  world_sys_resorce: mining
+
+dimension:
+  normal:
+    name: normal
+    locationx: 0
+    locationy: 64
+    locationz: 0
+    locYaw: 0
+    locPitch: 0
+
+  building:
+    key: building
+    name: world_sys_building
+    locationx: 0
+    locationy: 64
+    locationz: 0
+    locYaw: 0
+    locPitch: 0
+
+  lobby:
+    name: world_sys_lobby
+    locationx: 0
+    locationy: 64
+    locationz: 0
+    locYaw: 0
+    locPitch: 0
+
+  mining:
+    name: world_sys_resorce
+    locationx: 0
+    locationy: 64
+    locationz: 0
+    locYaw: 0
+    locPitch: 0

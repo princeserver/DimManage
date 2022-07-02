@@ -9,3 +9,14 @@ commands:
   world:
     description: world-tp
     usage: コマンド失敗
+    permission: Dim.user
+
+  Dimtest:
+    description: dimtest
+    usage: コマンド失敗
+    permission: Dim.op
+
+  home:
+    description: home-tp record
+    usage: コマンド失敗
+    permission: Dim.user
