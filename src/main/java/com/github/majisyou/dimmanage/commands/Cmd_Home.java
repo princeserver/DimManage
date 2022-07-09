@@ -3,6 +3,7 @@ package com.github.majisyou.dimmanage.commands;
 import com.github.majisyou.dimmanage.DimManage;
 import com.github.majisyou.dimmanage.system.ConfigManager;
 import com.github.majisyou.dimmanage.system.DimSystem;
+import com.github.majisyou.dimmanage.system.SoundManage;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -33,14 +34,22 @@ public class Cmd_Home implements CommandExecutor {
                             return true;
                         }
                         player.teleport(loc);
+                        SoundManage.sendSuccess(player);
                         return true;
                     }
                 }
                 if (args.length == 2) {
                     if (args[0].equals("set")) {
                         if (args[1].equals("here")) {
+                            Location old = DimSystem.HomeRead(player);
                             DimSystem.HomeRecord(player);
-                            player.sendMessage("homeを" + "x:" + player.getLocation().getX() + "y:" + player.getLocation().getY() + "z:" + player.getLocation().getZ() + "に設定した");
+                            Location newLoc = DimSystem.HomeRead(player);
+                            if(old != null){
+                                player.sendMessage("homeをx:"+DimSystem.Num10(old.getX())+"y:"+DimSystem.Num10(old.getY())+"z:"+DimSystem.Num10(old.getZ())+"から"+"x:"+DimSystem.Num10(newLoc.getX())+"y:"+DimSystem.Num10(newLoc.getY())+"z:"+DimSystem.Num10(newLoc.getZ())+"に変更した");
+                            }else {
+                                player.sendMessage("homeをx:"+DimSystem.Num10(newLoc.getX())+"y:"+DimSystem.Num10(newLoc.getY())+"z:"+DimSystem.Num10(newLoc.getZ())+"に設定した");
+                            }
+                            SoundManage.sendSuccess(player);
                             return true;
                         }
                     }
