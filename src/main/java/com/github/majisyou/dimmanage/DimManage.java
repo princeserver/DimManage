@@ -6,6 +6,7 @@ import com.github.majisyou.dimmanage.commands.Cmd_TabComplete;
 import com.github.majisyou.dimmanage.commands.Cmd_World_teleport;
 import com.github.majisyou.dimmanage.event.*;
 import com.github.majisyou.dimmanage.system.ConfigManager;
+import com.github.majisyou.dimmanage.system.DimSystem;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DimManage extends JavaPlugin {

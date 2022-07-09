@@ -4,6 +4,7 @@ import com.github.majisyou.dimmanage.DimManage;
 import com.github.majisyou.dimmanage.gui.Gui;
 import com.github.majisyou.dimmanage.system.ConfigManager;
 import com.github.majisyou.dimmanage.system.DimSystem;
+import com.github.majisyou.dimmanage.system.SoundManage;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -57,6 +58,7 @@ public class InventoryClick implements Listener {
                                 return;
                             }
                             event.getWhoClicked().teleport(loc);
+                            SoundManage.sendSuccess((Player) event.getWhoClicked());
                         }
                     }
                     if(event.getSlot()==10){
@@ -82,6 +84,7 @@ public class InventoryClick implements Listener {
                             }else {
                                 event.getWhoClicked().sendMessage("homeをx:"+DimSystem.Num10(newLoc.getX())+"y:"+DimSystem.Num10(newLoc.getY())+"z:"+DimSystem.Num10(newLoc.getZ())+"に設定した");
                             }
+                            SoundManage.sendSuccess((Player) event.getWhoClicked());
                             DimSystem.HomeRecord((Player) event.getWhoClicked());
                             event.getWhoClicked().closeInventory();
                         }
