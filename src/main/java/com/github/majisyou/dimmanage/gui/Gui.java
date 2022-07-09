@@ -23,15 +23,15 @@ public class Gui {
         ItemStack HomeTele = GuiItem.homeTeleport();
 
         if(DimName.equals("normal")){
-            ItemStack[] GuiContainer = new  ItemStack[]{NormalDim,HomeDim,BackGround,LobbyDim,BuildingDim,ResourceDim,NormalDim,BackGround,BackGround,
-                                                        BackGround,HomeTele,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,
+            ItemStack[] GuiContainer = new  ItemStack[]{NormalDim,BackGround,BackGround,LobbyDim,BuildingDim,ResourceDim,NormalDim,BackGround,BackGround,
+                                                        BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,
                                                         BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,};
             inventory.setContents(GuiContainer);
             player.openInventory(inventory);
             return;
         }
         if(DimName.equals("lobby")){
-            ItemStack[] GuiContainer = new  ItemStack[]{NormalDim,BackGround,BackGround,LobbyDim,BuildingDim,ResourceDim,NormalDim,BackGround,BackGround,
+            ItemStack[] GuiContainer = new  ItemStack[]{LobbyDim,BackGround,BackGround,LobbyDim,BuildingDim,ResourceDim,NormalDim,BackGround,BackGround,
                                             BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,
                                             BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,};
             inventory.setContents(GuiContainer);
@@ -47,7 +47,7 @@ public class Gui {
             return;
         }
         if(DimName.equals("mining")){
-            ItemStack[] GuiContainer = new  ItemStack[]{BuildingDim,HomeDim,BackGround,LobbyDim,BuildingDim,ResourceDim,NormalDim,BackGround,BackGround,
+            ItemStack[] GuiContainer = new  ItemStack[]{ResourceDim,HomeDim,BackGround,LobbyDim,BuildingDim,ResourceDim,NormalDim,BackGround,BackGround,
                     BackGround,HomeTele,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,
                     BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,};
             inventory.setContents(GuiContainer);

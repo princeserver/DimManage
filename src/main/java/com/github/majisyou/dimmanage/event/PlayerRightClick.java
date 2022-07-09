@@ -3,6 +3,7 @@ package com.github.majisyou.dimmanage.event;
 import com.github.majisyou.dimmanage.DimManage;
 import com.github.majisyou.dimmanage.gui.Gui;
 import com.github.majisyou.dimmanage.system.ConfigManager;
+import com.github.majisyou.dimmanage.system.SoundManage;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -36,6 +37,7 @@ public class PlayerRightClick implements Listener {
                 if(ConfigManager.getDimensions().containsKey(event.getPlayer().getWorld().getName())){
                     String DimName =  ConfigManager.getDimensions().get(event.getPlayer().getWorld().getName());
                     Gui.OpenDimGui(DimName,event.getPlayer());
+                    SoundManage.OpenEnder(event.getPlayer());
                 }else {
                     plugin.getLogger().info("(DM)"+"プレイヤーの存在するワールドがconfigに登録されていない："+event.getPlayer().getWorld().getName());
                     event.getPlayer().sendMessage("Guiを開けませんでした");

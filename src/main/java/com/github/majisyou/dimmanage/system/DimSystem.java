@@ -5,7 +5,11 @@ import com.github.majisyou.dimmanage.MySql.StatusRecord;
 import jdk.jshell.Snippet;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DimSystem {
     private static final DimManage plugin = DimManage.getInstance();
@@ -23,11 +27,15 @@ public class DimSystem {
                 loc = new Location(Bukkit.getWorld("world"),ConfigManager.getLoc_x(),ConfigManager.getLoc_y(),ConfigManager.getLoc_z(),(float) ConfigManager.getLoc_yaw(),(float) ConfigManager.getLoc_pitch());
             }
             player.teleport(loc);
+            SoundManage.sendSuccess(player);
+            SendTeleportMessage(player,worldName);
             return true;
         }
         if(Bukkit.getWorld(ConfigManager.getWorld())!=null){
             Location loc = new Location(Bukkit.getWorld(ConfigManager.getWorld()),ConfigManager.getLoc_x(),ConfigManager.getLoc_y(),ConfigManager.getLoc_z(),(float) ConfigManager.getLoc_yaw(),(float) ConfigManager.getLoc_pitch());
             player.teleport(loc);
+            SoundManage.sendSuccess(player);
+            SendTeleportMessage(player,worldName);
             return true;
         }
         return false;
@@ -35,7 +43,11 @@ public class DimSystem {
 
     public static void HomeRecord(Player player){
         StatusRecord statusRecord = new StatusRecord();
-        statusRecord.saveWorld(ConfigManager.getDimensions().get(player.getWorld().getName()),player.getUniqueId(),player.getLocation());
+        if(statusRecord.read(player.getUniqueId(),ConfigManager.getDimensions().get(player.getWorld().getName()))==null){
+            statusRecord.saveWorld(ConfigManager.getDimensions().get(player.getWorld().getName()),player.getUniqueId(),player.getLocation());
+        }else{
+            statusRecord.update(ConfigManager.getDimensions().get(player.getWorld().getName()),player.getUniqueId(),player.getLocation());
+        }
         plugin.getLogger().info("(DM)"+player.getName()+"が("+player.getWorld().getName()+")ホームを"+"x:"+player.getLocation().getX()+"y:"+player.getLocation().getY()+"z:"+player.getLocation().getZ()+"に設定した");
     }
     public static Location HomeRead(Player player){
@@ -52,6 +64,25 @@ public class DimSystem {
                 statusRecord.update("normal",player.getUniqueId(),player.getLocation());
             }
         }
+    }
+
+    public static void SendTeleportMessage(Player player, String worldname){
+        String name = "設定されていない";
+        switch (worldname){
+            case "normal" ->{
+                name = "通常";
+            }
+            case "mining" ->{
+                name = "採掘";
+            }
+            case "building" ->{
+                name = "建築";
+            }
+            case "lobby" ->{
+                name = "ロビー";
+            }
+        }
+        player.sendMessage("§a[情報]§r§f"+name+"ワールドに移動しました");
     }
 
     public static double Num10(double num){

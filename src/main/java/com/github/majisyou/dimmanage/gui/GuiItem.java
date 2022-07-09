@@ -43,6 +43,7 @@ public class GuiItem {
         ItemStack item = new ItemStack(Material.OAK_SAPLING,1);
         ItemMeta itemMeta = item.getItemMeta();
         String name = "ロビー";
+        itemMeta.setCustomModelData(1);
         itemMeta.setDisplayName(ChatColor.UNDERLINE+"§aクリック"+ChatColor.WHITE+"で"+name+"に移動する");
         item.setItemMeta(itemMeta);
         return item;
@@ -52,6 +53,7 @@ public class GuiItem {
         ItemStack item = new ItemStack(Material.CRAFTING_TABLE,1);
         ItemMeta itemMeta = item.getItemMeta();
         String name = "建築ワールド";
+        itemMeta.setCustomModelData(1);
         itemMeta.setDisplayName(ChatColor.UNDERLINE+"§aクリック"+ChatColor.WHITE+"で"+name+"に移動する");
         item.setItemMeta(itemMeta);
         return item;
@@ -60,6 +62,7 @@ public class GuiItem {
         ItemStack item = new ItemStack(Material.DIAMOND_ORE,1);
         ItemMeta itemMeta = item.getItemMeta();
         String name = "採掘ワールド";
+        itemMeta.setCustomModelData(1);
         itemMeta.setDisplayName(ChatColor.UNDERLINE+"§aクリック"+ChatColor.WHITE+"で"+name+"に移動する");
         item.setItemMeta(itemMeta);
         return item;
@@ -68,6 +71,7 @@ public class GuiItem {
         ItemStack item = new ItemStack(Material.GRASS_BLOCK,1);
         ItemMeta itemMeta = item.getItemMeta();
         String name = "通常ワールド";
+        itemMeta.setCustomModelData(1);
         itemMeta.setDisplayName(ChatColor.UNDERLINE+"§aクリック"+ChatColor.WHITE+"で"+name+"に移動する");
         item.setItemMeta(itemMeta);
         return item;
@@ -76,6 +80,7 @@ public class GuiItem {
         ItemStack item = new ItemStack(Material.RED_BED,1);
         ItemMeta itemMeta = item.getItemMeta();
         String name = "ホーム";
+        itemMeta.setCustomModelData(1);
         itemMeta.setDisplayName(ChatColor.UNDERLINE+"§aクリック"+ChatColor.WHITE+"で"+name+"に移動する");
         item.setItemMeta(itemMeta);
         return item;
@@ -85,7 +90,7 @@ public class GuiItem {
         ItemMeta itemMeta = item.getItemMeta();
         List<String> Lore = new ArrayList<>();
         itemMeta.setCustomModelData(3404);
-        itemMeta.setDisplayName(ChatColor.UNDERLINE+"§aクリック"+ChatColor.WHITE+"でホームを現在の位置に設定する+name+");
+        itemMeta.setDisplayName(ChatColor.UNDERLINE+"§aクリック"+ChatColor.WHITE+"でホームを現在の位置に設定する");
         Lore.add(ChatColor.WHITE+"ホーム地点は各ワールドに1つずつ設定可能です");
         Lore.add(ChatColor.WHITE+"ホーム機能は/homeのコマンドからも使用できます");
         itemMeta.setLore(Lore);
