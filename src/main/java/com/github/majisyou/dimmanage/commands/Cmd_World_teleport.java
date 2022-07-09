@@ -5,6 +5,7 @@ import com.github.majisyou.dimmanage.MySql.StatusRecord;
 import com.github.majisyou.dimmanage.gui.Gui;
 import com.github.majisyou.dimmanage.system.ConfigManager;
 import com.github.majisyou.dimmanage.system.DimSystem;
+import com.github.majisyou.dimmanage.system.SoundManage;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -41,6 +42,7 @@ public class Cmd_World_teleport implements CommandExecutor {
             //guiを開く
             if(ConfigManager.getDimensions().containsKey(player.getWorld().getName())){
                 String DimName =  ConfigManager.getDimensions().get(player.getWorld().getName());
+                SoundManage.OpenEnder(player);
                 Gui.OpenDimGui(DimName,player);
             }else {
                 plugin.getLogger().info("(DM)"+"プレイヤーの存在するワールドがconfigに登録されていない："+player.getWorld().getName());
@@ -59,6 +61,16 @@ public class Cmd_World_teleport implements CommandExecutor {
         if(args[0].equals("lobby") || args[0].equals("mining") || args[0].equals("building") || args[0].equals("normal")){
             DimSystem.RecordNormal(player);
             DimSystem.Teleport(player,args[0]);
+            return true;
+        }
+
+        if(ConfigManager.getDimensions().containsKey(player.getWorld().getName())){
+            String DimName =  ConfigManager.getDimensions().get(player.getWorld().getName());
+            SoundManage.OpenEnder(player);
+            Gui.OpenDimGui(DimName,player);
+        }else {
+            plugin.getLogger().info("(DM)"+"プレイヤーの存在するワールドがconfigに登録されていない："+player.getWorld().getName());
+            player.sendMessage("Guiを開けませんでした");
         }
 
 //        sender.sendMessage(args[1]);
