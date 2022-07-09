@@ -14,6 +14,9 @@ public class Logout implements Listener {
 
     @EventHandler
     public void record_location(PlayerQuitEvent event){
+//        if(event.getPlayer().getVehicle()!=null){
+//            event.getPlayer().getVehicle().removePassenger(event.getPlayer());
+//        }
         DimSystem.RecordNormal(event.getPlayer());
     }
 

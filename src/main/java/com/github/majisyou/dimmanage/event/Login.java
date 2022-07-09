@@ -13,7 +13,7 @@ public class Login implements Listener {
 
     @EventHandler
     public static void PlayerLogin(PlayerJoinEvent event){
-        if(!event.getPlayer().getWorld().getName().equals("world_the_end")||event.getPlayer().getWorld().getName().equals("world_nether")){
+        if(!event.getPlayer().getWorld().getName().equals("world_the_end")&& !event.getPlayer().getWorld().getName().equals("world_nether")){
            if(!DimSystem.Teleport(event.getPlayer(),"lobby")){
                event.getPlayer().sendMessage("lobbyにテレポートできなかった");
                plugin.getLogger().info("(DM)"+event.getPlayer().getName()+"がログインするときロビーにテレポートできなかった");
