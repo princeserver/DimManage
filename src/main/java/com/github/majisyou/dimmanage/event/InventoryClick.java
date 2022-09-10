@@ -22,6 +22,28 @@ public class InventoryClick implements Listener {
     @EventHandler
     public static void DimClick(InventoryClickEvent event){
         if(event.getView().getTitle().equals("ワールドを移動する")){
+            if(DimSystem.isBedRock((Player) event.getWhoClicked())){
+                if(event.getCurrentItem()!=null){
+                    event.setCancelled(true);
+                    if(!event.getClickedInventory().getType().equals(InventoryType.PLAYER)){
+                        if(event.getSlot()==3){
+                            event.getWhoClicked().closeInventory();
+                            DimSystem.RecordNormal((Player) event.getWhoClicked());
+                            DimSystem.Teleport((Player) event.getWhoClicked(),"lobby");
+                            plugin.getLogger().info("(DM)"+event.getWhoClicked().getName()+"がlobbyに移動した");
+                        }
+
+                        if(event.getSlot()==5){
+                            event.getWhoClicked().closeInventory();
+                            DimSystem.RecordNormal((Player) event.getWhoClicked());
+                            DimSystem.Teleport((Player) event.getWhoClicked(),"normal");
+                            plugin.getLogger().info("(DM)"+event.getWhoClicked().getName()+"がnormalに移動した");
+                        }
+                    }
+                }
+            }
+
+
             if(event.getCurrentItem()!=null){
                 event.setCancelled(true);
                 if(!event.getClickedInventory().getType().equals(InventoryType.PLAYER)){
@@ -37,13 +59,13 @@ public class InventoryClick implements Listener {
                         DimSystem.Teleport((Player) event.getWhoClicked(),"building");
                         plugin.getLogger().info("(DM)"+event.getWhoClicked().getName()+"がbuildingに移動した");
                     }
+//                    if(event.getSlot()==5){
+//                        event.getWhoClicked().closeInventory();
+//                        DimSystem.RecordNormal((Player) event.getWhoClicked());
+//                        DimSystem.Teleport((Player) event.getWhoClicked(),"mining");
+//                        plugin.getLogger().info("(DM)"+event.getWhoClicked().getName()+"がminingに移動した");
+//                    }
                     if(event.getSlot()==5){
-                        event.getWhoClicked().closeInventory();
-                        DimSystem.RecordNormal((Player) event.getWhoClicked());
-                        DimSystem.Teleport((Player) event.getWhoClicked(),"mining");
-                        plugin.getLogger().info("(DM)"+event.getWhoClicked().getName()+"がminingに移動した");
-                    }
-                    if(event.getSlot()==6){
                         event.getWhoClicked().closeInventory();
                         DimSystem.RecordNormal((Player) event.getWhoClicked());
                         DimSystem.Teleport((Player) event.getWhoClicked(),"normal");

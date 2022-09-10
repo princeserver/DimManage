@@ -11,6 +11,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class Cmd_Home implements CommandExecutor {
@@ -24,6 +26,12 @@ public class Cmd_Home implements CommandExecutor {
             if(!sender.hasPermission("Dim.User")){
                 return false;
             }
+
+            if(DimSystem.isBedRock(player)){
+                player.sendMessage("BedRockPlayerには使えない機能です");
+                return false;
+            }
+
 
             if (ConfigManager.getDimensions().get(player.getWorld().getName()).equals("building") || ConfigManager.getDimensions().get(player.getWorld().getName()).equals("mining")) {
                 if (args.length == 1) {

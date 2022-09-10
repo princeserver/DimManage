@@ -2,17 +2,15 @@ package com.github.majisyou.dimmanage.system;
 
 import com.github.majisyou.dimmanage.DimManage;
 import com.github.majisyou.dimmanage.MySql.StatusRecord;
-import jdk.jshell.Snippet;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.geysermc.floodgate.api.FloodgateApi;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class DimSystem {
     private static final DimManage plugin = DimManage.getInstance();
+    private static FloodgateApi flood = DimManage.getFloodate();
 
     public static boolean Teleport(Player player,String worldName){
         ConfigManager.loadWorld(worldName);
@@ -66,6 +64,10 @@ public class DimSystem {
         }
     }
 
+    public static boolean isBedRock(Player player){
+        return flood.isFloodgatePlayer(player.getUniqueId());
+    }
+
     public static void SendTeleportMessage(Player player, String worldname){
         String name = "設定されていない";
         switch (worldname){
@@ -87,8 +89,7 @@ public class DimSystem {
 
     public static double Num10(double num){
         int a = (int) num*10;
-        double b = (double) a;
-        return  b/10;
+        return  (double) a /10;
     }
 
 }

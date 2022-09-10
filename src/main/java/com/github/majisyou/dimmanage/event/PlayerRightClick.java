@@ -24,12 +24,15 @@ public class PlayerRightClick implements Listener {
 
         if(event.getAction() == RIGHT_CLICK_AIR || event.getAction() == RIGHT_CLICK_BLOCK) {
             if(event.getAction() == RIGHT_CLICK_BLOCK){
-                if(event.getClickedBlock().getType().equals(Material.ENDER_CHEST)||event.getClickedBlock().getType().equals(Material.ANVIL)||event.getClickedBlock().getType().equals(Material.DAMAGED_ANVIL)||event.getClickedBlock().getType().equals(Material.CHIPPED_ANVIL)||event.getClickedBlock().getType().equals(Material.GRINDSTONE)){
+                if(event.getClickedBlock().getType().equals(Material.ENDER_CHEST)||event.getClickedBlock().getType().equals(Material.ANVIL)||event.getClickedBlock().getType().equals(Material.DAMAGED_ANVIL)||event.getClickedBlock().getType().equals(Material.CHIPPED_ANVIL)||event.getClickedBlock().getType().equals(Material.GRINDSTONE)||event.getClickedBlock().getType().equals(Material.LODESTONE)){
                     return;
                 }
             }
 
             if(event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.COMPASS)){
+                if(event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()){
+                    return;
+                }
                 if(event.getPlayer().getWorld().getName().equals("world_the_end")||event.getPlayer().getWorld().getName().equals("world_nether")){
                     event.getPlayer().sendMessage("このディメンションではコンパスを使うことができない");
                     return;

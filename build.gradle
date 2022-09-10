@@ -3,12 +3,17 @@ plugins {
 }
 
 group = 'com.github.majisyou'
-version = '1.0-1'
+version = '2.0-1'
 tasks.withType(AbstractCompile)*.options*.encoding = tasks.withType(GroovyCompile)*.groovyOptions*.encoding = 'UTF-8'
 
 
 repositories {
     mavenCentral()
+    maven {
+        name = 'opencollab-snapshot'
+        url = 'https://repo.opencollab.dev/maven-snapshots/'
+    }
+
     maven {
         name = 'papermc-repo'
         url = 'https://papermc.io/repo/repository/maven-public/'
@@ -21,6 +26,7 @@ repositories {
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.18.1-R0.1-SNAPSHOT'
+    compileOnly 'org.geysermc.floodgate:api:2.0-SNAPSHOT'
 }
 
 def targetJavaVersion = 17

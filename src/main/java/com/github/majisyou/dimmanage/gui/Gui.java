@@ -1,6 +1,7 @@
 package com.github.majisyou.dimmanage.gui;
 
 import com.github.majisyou.dimmanage.DimManage;
+import com.github.majisyou.dimmanage.system.DimSystem;
 import org.bukkit.Bukkit;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -22,8 +23,20 @@ public class Gui {
         ItemStack HomeDim = GuiItem.homeDim();
         ItemStack HomeTele = GuiItem.homeTeleport();
 
+        if(DimSystem.isBedRock(player)){
+            if(DimName.equals("normal")){
+                ItemStack[] GuiContainer = new  ItemStack[]{NormalDim,BackGround,BackGround,LobbyDim,BackGround,NormalDim,BackGround,BackGround,BackGround,
+                                                            BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,
+                                                            BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,};
+                inventory.setContents(GuiContainer);
+                player.openInventory(inventory);
+                return;
+            }
+            return;
+        }
+
         if(DimName.equals("normal")){
-            ItemStack[] GuiContainer = new  ItemStack[]{NormalDim,BackGround,BackGround,LobbyDim,BuildingDim,ResourceDim,NormalDim,BackGround,BackGround,
+            ItemStack[] GuiContainer = new  ItemStack[]{NormalDim,BackGround,BackGround,LobbyDim,BuildingDim,NormalDim,BackGround,BackGround,BackGround,
                                                         BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,
                                                         BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,};
             inventory.setContents(GuiContainer);
@@ -31,7 +44,7 @@ public class Gui {
             return;
         }
         if(DimName.equals("lobby")){
-            ItemStack[] GuiContainer = new  ItemStack[]{LobbyDim,BackGround,BackGround,LobbyDim,BuildingDim,ResourceDim,NormalDim,BackGround,BackGround,
+            ItemStack[] GuiContainer = new  ItemStack[]{LobbyDim,BackGround,BackGround,LobbyDim,BuildingDim,NormalDim,BackGround,BackGround,BackGround,
                                             BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,
                                             BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,};
             inventory.setContents(GuiContainer);
@@ -39,21 +52,21 @@ public class Gui {
             return;
         }
         if(DimName.equals("building")){
-            ItemStack[] GuiContainer = new  ItemStack[]{BuildingDim,HomeDim,BackGround,LobbyDim,BuildingDim,ResourceDim,NormalDim,BackGround,BackGround,
+            ItemStack[] GuiContainer = new  ItemStack[]{BuildingDim,HomeDim,BackGround,LobbyDim,BuildingDim,NormalDim,BackGround,BackGround,BackGround,
                                                         BackGround,HomeTele,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,
                                                         BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,};
             inventory.setContents(GuiContainer);
             player.openInventory(inventory);
             return;
         }
-        if(DimName.equals("mining")){
-            ItemStack[] GuiContainer = new  ItemStack[]{ResourceDim,HomeDim,BackGround,LobbyDim,BuildingDim,ResourceDim,NormalDim,BackGround,BackGround,
-                    BackGround,HomeTele,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,
-                    BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,};
-            inventory.setContents(GuiContainer);
-            player.openInventory(inventory);
-            return;
-        }
+//        if(DimName.equals("mining")){
+//            ItemStack[] GuiContainer = new  ItemStack[]{ResourceDim,HomeDim,BackGround,LobbyDim,BuildingDim,NormalDim,BackGround,BackGround,BackGround,
+//                    BackGround,HomeTele,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,
+//                    BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,BackGround,};
+//            inventory.setContents(GuiContainer);
+//            player.openInventory(inventory);
+//            return;
+//        }
         plugin.getLogger().info("DM"+DimName+"が間違えてる(Guiを開けなかった)");
         player.sendMessage("Guiを開けなかった");
     }

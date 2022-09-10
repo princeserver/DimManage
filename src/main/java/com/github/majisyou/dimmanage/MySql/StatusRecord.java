@@ -120,8 +120,6 @@ public class StatusRecord {
         return null;
     }
 
-
-
     private void openConnection() throws  SQLException, ClassNotFoundException{
         if (connection != null && !connection.isClosed()){
             return;

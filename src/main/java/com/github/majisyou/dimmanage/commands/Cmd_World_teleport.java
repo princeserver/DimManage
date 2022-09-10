@@ -58,7 +58,20 @@ public class Cmd_World_teleport implements CommandExecutor {
 //            return true;
 //        }
 
-        if(args[0].equals("lobby") || args[0].equals("mining") || args[0].equals("building") || args[0].equals("normal")){
+//        if(args[0].equals("lobby") || args[0].equals("mining") || args[0].equals("building") || args[0].equals("normal")){
+//            DimSystem.RecordNormal(player);
+//            DimSystem.Teleport(player,args[0]);
+//            return true;
+//        }
+//
+
+        if(args[0].equals("lobby") || args[0].equals("building") || args[0].equals("normal")){
+            if(DimSystem.isBedRock(player)){
+                if(args[0].equals("building")){
+                    player.sendMessage("BedRockPlayerには使えない機能です");
+                    return true;
+                }
+            }
             DimSystem.RecordNormal(player);
             DimSystem.Teleport(player,args[0]);
             return true;

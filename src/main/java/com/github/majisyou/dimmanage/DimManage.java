@@ -8,17 +8,19 @@ import com.github.majisyou.dimmanage.event.*;
 import com.github.majisyou.dimmanage.system.ConfigManager;
 import com.github.majisyou.dimmanage.system.DimSystem;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.geysermc.floodgate.api.FloodgateApi;
 
 public final class DimManage extends JavaPlugin {
 
     private static DimManage instance;
+    private static FloodgateApi floodate = FloodgateApi.getInstance();
     public DimManage(){
         instance = this;
     }
     public static DimManage getInstance(){
         return instance;
     }
-
+    public static FloodgateApi getFloodate(){return floodate;}
 
     @Override
     public void onEnable() {
@@ -48,4 +50,6 @@ public final class DimManage extends JavaPlugin {
         getLogger().info("DimManageプラグインを停止した");
         // Plugin shutdown logic
     }
+
+
 }
